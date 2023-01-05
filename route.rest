@@ -2,29 +2,59 @@ GET http://localhost:3000/patients
 
 ###
 
-GET http://localhost:3000/patients/63b6b3a24b82fe3dfdf72752
+GET http://localhost:3000/patients/63b6d65ec45d46ef82c6d411
 
 ###
+
+
 
 POST http://localhost:3000/patients
 Content-Type: application/json
 
 {
-    "name": "Amazing Person",
+    "name": "Amazing Person 1",
     "phoneNumber": 12345678 ,
-    "email": "test123@gmail.com"
+    "email": "test1234@gmail.com",
+    "doctor": "Good Doctor",
+    "prefered_date":"wednesday"
 
 }
 
 ###
 
-DELETE http://localhost:3000/patients/63b6ba466f1715b1e69f0803
+DELETE http://localhost:3000/patients/63b6dd6c784731b37092ccbf
 
 
 ###
-PATCH http://localhost:3000/patients/63b6ba406f1715b1e69f0800
+PATCH http://localhost:3000/patients/63b6ddbf784731b37092ccd2
 Content-Type: application/json
 
 {
     "name": "Updated Name"
 }
+
+###
+
+GET http://localhost:3000/doctors
+
+###
+POST http://localhost:3000/doctors
+Content-Type: application/json
+
+{
+    "name": "Good Doctor",
+    "monday": false,
+    "tuesday": false,
+    "wednesday": true,
+    "thursday": false,
+    "friday": false
+}
+
+###
+
+DELETE http://localhost:3000/doctors/63b6cff23b3a4a149dbde0e7
+
+
+###
+
+GET http://localhost:3000/patients/63b6ddbf784731b37092ccd2/availability

@@ -13,6 +13,12 @@ const patientSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true
+    },
+    doctor:{
+        type: String
+    },
+    prefered_date:{
+        type: String
     }
 })
 

@@ -12,7 +12,10 @@ db.once('open', () => console.log('connected to Database'))
 app.use(express.json())
 
 const patientRouter = require('./routes/patients')
+const doctorRouter = require('./routes/doctors')
+
 app.use('/patients', patientRouter)
+app.use('/doctors',doctorRouter)
 
 
 
