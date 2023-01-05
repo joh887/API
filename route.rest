@@ -1,0 +1,30 @@
+GET http://localhost:3000/patients
+
+###
+
+GET http://localhost:3000/patients/63b6b3a24b82fe3dfdf72752
+
+###
+
+POST http://localhost:3000/patients
+Content-Type: application/json
+
+{
+    "name": "Amazing Person",
+    "phoneNumber": 12345678 ,
+    "email": "test123@gmail.com"
+
+}
+
+###
+
+DELETE http://localhost:3000/patients/63b6ba466f1715b1e69f0803
+
+
+###
+PATCH http://localhost:3000/patients/63b6ba406f1715b1e69f0800
+Content-Type: application/json
+
+{
+    "name": "Updated Name"
+}
