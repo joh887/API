@@ -3,12 +3,20 @@ const mongoose = require('mongoose')
 const patientSchema = new mongoose.Schema({
     name:{
         type: String,
-        required: true
+        required: true,
+        minLength: 3,
+        maxLength: 32,
+        validation: /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/
     },
     phoneNumber:{
         type: Number,
-        required: true
-
+        required: true,
+        maxLength: 10,
+        validate: {
+            validator: function(v) {
+                return /^[0-9]+$/.test(v);
+            }
+        }
     },
     email: {
         type: String,
@@ -20,6 +28,6 @@ const patientSchema = new mongoose.Schema({
     prefered_date:{
         type: String
     }
-})
+}, {timestamps:true}, {collection: 'patients'})
 
 module.exports = mongoose.model('Patient',patientSchema)

@@ -43,6 +43,7 @@ Content-Type: application/json
 
 {
     "name": "Good Doctor 1",
+    "email": "/?%=!@#$%^&*()_+",
     "monday": false,
     "tuesday": false,
     "wednesday": true,

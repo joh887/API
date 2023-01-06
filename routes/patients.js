@@ -18,7 +18,11 @@ router.get('/', async (req,res) => {
 // Question How can I use /:id/:somethingElse?
 router.get('/availability/:id/', getPatient, async (req,res) => { 
     try {
-      const chosen_doctor = await Doctor.findOne({ name: res.patient.doctor });
+      const chosen_doctor = await Doctor.findOne(
+        { 
+            name: res.patient.doctor // → Adam
+        }
+        );
       if (!chosen_doctor) {
         res.status(404).json({ message: 'Doctor not found' });
         return;

@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Doctor = require('../models/doctor')
-
+const doctorsSchema = require('../controllers/doctorsSchema');
 
 //Getting all
 router.get('/', async (req,res) => {
@@ -19,14 +19,9 @@ router.get('/:id', getDoctor, (req,res) => {
 })
 //Creating One
 router.post('/', async (req,res) => {
-    const doctor = new Doctor({
-        name: req.body.name,
-        monday: req.body.monday,
-        tuesday: req.body.tuesday,
-        wednesday: req.body.wednesday,
-        thursday: req.body.thursday,
-        friday: req.body.friday
-    })
+    const doctorData = req.body;
+    const purifiedData = doctorsSchema.validate( doctorData );
+    const doctor = new Doctor(purifiedData);
     try{
         const newdoctor = await doctor.save()
         res.status(201).json(newdoctor)
