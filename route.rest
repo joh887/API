@@ -30,7 +30,7 @@ PATCH http://localhost:3000/patients/63b6ddbf784731b37092ccd2
 Content-Type: application/json
 
 {
-    "name": "Updated Name"
+    "phoneNumber": "1231231231235125"
 }
 
 ###
@@ -42,7 +42,7 @@ POST http://localhost:3000/doctors
 Content-Type: application/json
 
 {
-    "name": "Good Doctor",
+    "name": "Good Doctor 1",
     "monday": false,
     "tuesday": false,
     "wednesday": true,
@@ -57,4 +57,4 @@ DELETE http://localhost:3000/doctors/63b6cff23b3a4a149dbde0e7
 
 ###
 
-GET http://localhost:3000/patients/63b6ddbf784731b37092ccd2/availability
+GET http://localhost:3000/patients/availability/63b6ddbf784731b37092ccd2

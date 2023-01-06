@@ -16,7 +16,7 @@ router.get('/', async (req,res) => {
 
 //Check the aligibility of the Doctor
 // Question How can I use /:id/:somethingElse?
-router.get('/:id/availability', getPatient, async (req,res) => { 
+router.get('/availability/:id/', getPatient, async (req,res) => { 
     try {
       const chosen_doctor = await Doctor.findOne({ name: res.patient.doctor });
       if (!chosen_doctor) {
@@ -28,7 +28,7 @@ router.get('/:id/availability', getPatient, async (req,res) => {
         res.json({ message: 'Doctor available on chosen date' });
         return;
       }
-      res.json({ message: 'Doctor available' });
+      res.json({ message: 'Doctor unavailable' });
     } catch (err) {
       res.status(500).json({ message: err.message });
     }
@@ -75,6 +75,15 @@ router.patch('/:id',getPatient, async (req,res) => {
     if (req.body.phoneNumber != null){
         res.patient.phoneNumber = req.body.phoneNumber
     }
+    if (req.body.email != null){
+        res.patient.email = req.body.email
+    }
+    if (req.body.doctor != null){
+        res.patient.doctor = req.body.doctor
+    }
+    if (req.body.prefered_date != null){
+        res.patient.prefered_date = req.body.prefered_date
+    }
     try{
         const updatedPatient = await res.patient.save()
         res.json(updatedPatient)
@@ -96,20 +105,10 @@ router.delete('/:id', getPatient, async (req,res) => {
 async function getPatient(req, res, next){
     let patient
     try{
-        // var name = await req.query.name
-        // console.log("name", name )
-        
-        var id = await req.query.id
-        console.log("id", id)
-        
-
-        return res.status(200).json({message: 'Sample Response'})
-
-
-        // patient = await Patient.findById(req.params.id)
-        // if(patient == null){
-        //     return res.status(404).json({message: 'Cannot find patient'})
-        // }
+        patient = await Patient.findById(req.params.id)
+        if(patient == null){
+            return res.status(404).json({message: 'Cannot find patient'})
+        }
     } catch(err){
         return res.status(500).json({message: err.message})
     }
