@@ -1,4 +1,4 @@
-GET http://localhost:3000/patients
+GET http://localhost:5001/patients
 
 ###
 
@@ -8,7 +8,7 @@ GET http://localhost:3000/patients/63b6d65ec45d46ef82c6d411
 
 
 
-POST http://localhost:3000/patients
+POST http://localhost:5001/patients
 Content-Type: application/json
 
 {
@@ -38,7 +38,7 @@ Content-Type: application/json
 GET http://localhost:3000/doctors
 
 ###
-POST http://localhost:3000/doctors
+POST http://localhost:5001/doctors
 Content-Type: application/json
 
 {
